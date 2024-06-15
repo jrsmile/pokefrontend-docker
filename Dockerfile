@@ -5,7 +5,7 @@ RUN git clone https://github.com/pagefaultgames/pokerogue
 WORKDIR pokerogue
 ARG NODE_ENV=production
 ENV NODE_ENV $NODE_ENV
-RUN sed -i '/s/VITE_SERVER_URL=.*/VITE_SERVER_URL=https\:\/\/pokeapi\.jrcloud\.eu\//g' .env
+RUN sed -i 's/^VITE_SERVER_URL=.*/VITE_SERVER_URL=https\:\/\/pokeapi\.jrcloud\.eu\//g' .env
 RUN npm ci && npm cache clean --force
 
 FROM nginx:stable-alpine
